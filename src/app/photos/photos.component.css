@@ -1,0 +1,15 @@
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  grid-row-gap: 30px;
+  grid-column-gap: 20px;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+
+.load-more {
+  font-size: 14px;
+  text-transform: uppercase;
+  width: 150px;
+  padding: 10px;
+}

@@ -1,0 +1,5 @@
+<div class="photos">
+  <img *ngFor="let photo of photos" class="photo" src="{{photo.thumbnailUrl}}">
+</div>
+
+<button *ngIf="!photoService.allPhotosLoaded" (click)="getPhotos()" class="load-more">Загрузить ещё</button>
