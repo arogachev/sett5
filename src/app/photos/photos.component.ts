@@ -10,6 +10,7 @@ import { PhotoService } from '../photo.service';
 })
 export class PhotosComponent implements OnInit {
   photos: Photo[];
+  selectedPhoto: Photo;
 
   constructor(public photoService: PhotoService) { }
 
@@ -20,6 +21,22 @@ export class PhotosComponent implements OnInit {
   getPhotos(): void {
     this.photoService
       .getPhotos()
-      .subscribe(photos => this.photos = this.photos === undefined ? photos : this.photos.concat(photos));
+      .subscribe(photos => {
+        if (this.photos === undefined) {
+          this.photos = photos;
+
+          return;
+        }
+
+        Array.prototype.push.apply(this.photos, photos);
+      });
+  }
+
+  onSelect(photo: Photo): void {
+    this.selectedPhoto = photo;
+  }
+
+  onUnselect(): void {
+    this.selectedPhoto = undefined;
   }
 }

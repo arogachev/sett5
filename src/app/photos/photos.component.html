@@ -1,5 +1,20 @@
 <div class="photos">
-  <img *ngFor="let photo of photos" class="photo" src="{{photo.thumbnailUrl}}">
+  <img *ngFor="let photo of photos" [appImageLazyLoading]="photo.thumbnailUrl" (click)="onSelect(photo)"
+       class="photo">
 </div>
 
 <button *ngIf="!photoService.allPhotosLoaded" (click)="getPhotos()" class="load-more">Загрузить ещё</button>
+
+<div *ngIf="selectedPhoto" class="modal modal-open">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Photo #{{selectedPhoto.id}}</h2>
+      <span (click)="onUnselect()" class="close">&times;</span>
+    </div>
+
+    <img [appImageLazyLoading]="selectedPhoto.url" class="selected-photo">
+
+    <p><b>Album ID:</b> {{selectedPhoto.albumId}}</p>
+    <p><b>Title:</b> {{selectedPhoto.title}}</p>
+  </div>
+</div>

@@ -29,7 +29,7 @@ export class PhotoService {
           this.start +=  photos.length;
         }),
         catchError(() => {
-          alert('Не удалось загрузить фотографии!');
+          alert('Failed to load photos!');
 
           return of([]);
         })
