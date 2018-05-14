@@ -1,5 +1,5 @@
 <div class="photos">
-  <img *ngFor="let photo of photos" [appImageLazyLoading]="photo.thumbnailUrl" (click)="onSelect(photo)"
+  <img *ngFor="let photo of photos" [appImageLazyLoading]="photo.thumbnailUrl | secureUrl" (click)="onSelect(photo)"
        class="photo">
 </div>
 
@@ -12,7 +12,7 @@
       <span (click)="onUnselect()" class="close">&times;</span>
     </div>
 
-    <img [appImageLazyLoading]="selectedPhoto.url" class="selected-photo">
+    <img [appImageLazyLoading]="selectedPhoto.url | secureUrl" class="selected-photo">
 
     <p><b>Album ID:</b> {{selectedPhoto.albumId}}</p>
     <p><b>Title:</b> {{selectedPhoto.title}}</p>
