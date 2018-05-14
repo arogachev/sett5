@@ -10,6 +10,7 @@ import { Photo } from './photo';
 export class PhotoService {
   allPhotosLoaded = false;
 
+  private photosUrlBase = 'https://jsonplaceholder.typicode.com/photos';
   private start = 0;
   private limit = 9;
 
@@ -37,6 +38,6 @@ export class PhotoService {
   }
 
   private getPhotosUrl() {
-    return `https://jsonplaceholder.typicode.com/photos?_start=${this.start}&_limit=${this.limit}`;
+    return `${this.photosUrlBase}?_start=${this.start}&_limit=${this.limit}`;
   }
 }
